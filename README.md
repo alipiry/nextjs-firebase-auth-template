@@ -26,7 +26,7 @@ This template works as any NextJS application. See the [official documentation](
 Retrieve you web credentials by referring to the 
 [Official documentation](https://firebase.google.com/docs/web/setup?sdk_version=v8). Once in your possession, open `src/lib/firebase.clien.ts` and paste them in there.
 
-⚠️ You will <u>also</u> need to paste the value of `apiKey` at `src/lib/usrSSR/usrSSR.ts:49`.
+⚠️ You will <u>also</u> need to paste the value of `apiKey` at `src/lib/useSSR/useSSR.ts:49`.
 
 What?! Inlining credentials, you must be mad. I hear you, I really do, but this is perfectly safe: 
 
