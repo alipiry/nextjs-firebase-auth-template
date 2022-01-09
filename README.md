@@ -17,16 +17,16 @@ SSR through Firebase tokens.
 
 ## Getting Started
 
-This template works as any NextJS application. See the [official documentation](https://nextjs.org/docs).
+This template works as any NextJS application. Please refer to the [official documentation](https://nextjs.org/docs).
 
 ## Configuration
 
 ### Firebase Web 
 
-Retrieve you web credentials by referring to the 
-[Official documentation](https://firebase.google.com/docs/web/setup?sdk_version=v8). Once in your possession, open `src/lib/firebase.clien.ts` and paste them in there.
+Retrieve your web credentials by referring to the 
+[official documentation](https://firebase.google.com/docs/web/setup?sdk_version=v8). Once in your possession, open [`src/lib/firebase.client.ts`](./src/lib/firebase.client.ts) and paste them in there.
 
-⚠️ You will <u>also</u> need to paste the value of `apiKey` at `src/lib/useSSR/useSSR.ts:49`.
+⚠️ You will <u>also</u> need to paste the value of `apiKey` at [`src/lib/useSSR/useSSR.ts:49`](./src/lib/useSSR/useSSR.ts).
 
 What?! Inlining credentials, you must be mad. I hear you, I really do, but this is perfectly safe: 
 
@@ -38,19 +38,18 @@ You can read more about it
 
 ### Firebase Admin 
 
-Retrieve you admin credentials by referring to the
-[Official documentation](https://firebase.google.com/docs/admin/setup). Once in your possession, open `src/lib/firebase.admin.ts` and update the configuration 
-initialisation to fit your needs.
+Retrieve your admin credentials by referring to the
+[official documentation](https://firebase.google.com/docs/admin/setup). Once in your possession, open [`src/lib/firebase.admin.ts`](./src/lib/firebase.admin.ts) and update the configuration initialisation to fit your needs.
 
 ### Loading Page/State
 
 Whilst waiting for the Firebase client to update your credentials, the application will display 
-a loading page/state. You can modify the output at `src/providers/auth:94`.
+a loading page/state. You can modify the output at [`src/providers/auth:94`](./src/providers/auth).
 
 ## SSR
 
-In order to utilise your token to fetch content on the server, you will need to wrap you page 
-with the `useSSR` hook or a variant thereof (e.g. `useExampleProps`).
+In order to utilise your token to fetch content on the server, you will need to wrap your pages 
+with the `useSSR` hook or a variant thereof e.g., `useExampleProps`.
 
 ```tsx
 export default function Login() {
@@ -72,12 +71,12 @@ export const getServerSideProps = useSSR(async (ctx, idToken) => {
 });
 ```
 
-The `useSSR` hook will handle retrieving the token from the request as well as refreshing it if 
-need be before calling the user-defined callback.
+The `useSSR` hook will handle retrieving the token from the request object as well as refreshing it if 
+need be before calling the given callback.
 
 ### Extending
 
-You can extend the behaviour of `useSSR` and provide more scenario-specific functionality. For 
+You can extend the behaviour of `useSSR` to enable more scenario-specific functionality. For 
 instance, you may have data (e.g. none-firebase user record) that must be fetched before each page load. 
 
 ```tsx
@@ -113,7 +112,7 @@ export function useUserProps<T extends IUserProps>(
 }
 ```
 
-You can call the hook callback on your page to fetch any additional data.
+You can define a callback to further fetch additional data.
 
 ```tsx
 interface IProps extends IUserProps {
